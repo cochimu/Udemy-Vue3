@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const itemName1 = 'Desk'
+// letにして変数の中身を上書きできるようにする
+// ただしこのままではvueが再度読み込みされないので反映しない
+// なのでこの値が変わったら再度vueを読み込んでね、としてあげないといけない(リアクティブな値)
+let itemName1 = 'Desk'
 const itemName2 = 'Bike'
 
 const price1 = 40000
@@ -15,6 +18,8 @@ const input = (event: any) => {
 	// eventの中のtargetの中のvalueというオブジェクトを見てる
 	// inputで入力した値がここに入ってるから
 	console.log('event:', event.target.value)
+	// itemName1にinputで入れた値を代入する
+	itemName1 = event.target.value
 }
 </script>
 
