@@ -10,11 +10,20 @@ const url1 = ''
 const buy = (itemName: string) => {
 	alert('Are you sure buy ' + itemName + '?')
 }
+
+const input = (event: any) => {
+	// eventの中のtargetの中のvalueというオブジェクトを見てる
+	// inputで入力した値がここに入ってるから
+	console.log('event:', event.target.value)
+}
 </script>
 
 <template>
 	<div class="container">
 		<h1>支出</h1>
+
+		<input v-on:input="input"/>
+
 		<div class="payment">
 			<label>{{ itemName1 }}</label>
 			<label>{{ price1 }} yen</label>
