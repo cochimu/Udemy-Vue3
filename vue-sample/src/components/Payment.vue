@@ -6,6 +6,10 @@ const price1 = 40000
 const price2 = 20000
 
 const url1 = ''
+
+const buy = (itemName: string) => {
+	alert('Are you sure buy ' + itemName + '?')
+}
 </script>
 
 <template>
@@ -14,13 +18,16 @@ const url1 = ''
 		<div class="payment">
 			<label>{{ itemName1 }}</label>
 			<label>{{ price1 }} yen</label>
-			<!-- v-bindで動的な値を入れられる -->
+			<!-- v-bindで変数などの動的な値を入れられる -->
 			<a v-bind:href="url1">購入</a>
+			<!-- v-onでメソッドを埋め込める -->
+			<button v-on:click="buy(itemName1)">BUY</button>
 		</div>
 		<div class="payment">
 			<label>{{ itemName2 }}</label>
 			<label>{{ price2 }} yen</label>
 			<a href="">購入</a>
+			<button v-on:click="buy(itemName2)">BUY</button>
 		</div>
 	</div>
 </template>
