@@ -1,8 +1,9 @@
 <script setup lang="ts">
-// letにして変数の中身を上書きできるようにする
-// ただしこのままではvueが再度読み込みされないので反映しない
-// なのでこの値が変わったら再度vueを読み込んでね、としてあげないといけない(リアクティブな値)
-let itemName1 = 'Desk'
+// リアクティブな値とは中身が変わったら再度templateを読み込みしなおしてね、という値
+// それをするにはref形式にする。そのためにimportする
+import { ref } from 'vue'
+// このようにref形式にしておけばここの中身が変わればtemplateを再度読み込みしてね、という合図になる
+const itemName1 = ref<string>('Desk')
 const itemName2 = 'Bike'
 
 const price1 = 40000
@@ -19,7 +20,8 @@ const input = (event: any) => {
 	// inputで入力した値がここに入ってるから
 	console.log('event:', event.target.value)
 	// itemName1にinputで入れた値を代入する
-	itemName1 = event.target.value
+	// refに代入するときは.valueで再代入する。constだけどオブジェクトの中のvalueへの代入だから再代入できる
+	itemName1.value = event.target.value
 }
 </script>
 
