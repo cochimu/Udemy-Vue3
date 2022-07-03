@@ -2,7 +2,7 @@
 // リアクティブな値とは中身が変わったら再度templateを読み込みしなおしてね、という値
 // それをするにはref形式にする。そのためにimportする
 // オフジェクトそのものをリアクティブにしたい場合はrefじゃなくてreactiveを使う
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch, toRefs } from 'vue'
 
 // このようにref形式にしておけばここの中身が変わればtemplateを再度読み込みしてね、という合図になる
 // const itemName1 = ref<string>('Desk')
@@ -46,15 +46,31 @@ const budget = 50000
 
 // 何らかの条件をもとに値を生成する時にはcomputedを使う
 // computedじゃなくて自作のメソッドでもいいけど、computedの方がキャッシュを使えたり動作が軽いのでcomputed推奨
-const priceLabel = computed(() => {
-	if (item1.price > budget * 2) {
-		return 'too expensive...'
-	} else if  (item1.price > budget) {
-		return 'expensive...'
+// const priceLabel = computed(() => {
+// 	if (item1.price > budget * 2) {
+// 		return 'too expensive...'
+// 	} else if  (item1.price > budget) {
+// 		return 'expensive...'
+// 	} else {
+// 		return item1.price + ' yen'
+// 	}
+// })
+
+// 上記のcomputedと同じことがwatchでもできる
+const priceLabel = ref<string>(item1.price + ' yen')
+// priceをリアクティブな値にするためにtoRefsを使う
+const { price } = toRefs(item1)
+// watchは第一引数が変化したら第二引数の関数が呼ばれる
+watch(price, () => {
+	if (price.value > budget * 2) {
+		priceLabel.value = 'too expensive...'
+	} else if (price.value > budget) {
+		priceLabel.value = 'expensive...'
 	} else {
-		return item1.price + 'yen'
+		priceLabel.value = price.value + ' yen'
 	}
 })
+
 
 </script>
 
