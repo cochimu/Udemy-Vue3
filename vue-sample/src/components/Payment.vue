@@ -45,6 +45,7 @@ const clear = () => {
 const budget = 50000
 
 // 何らかの条件をもとに値を生成する時にはcomputedを使う
+// computedじゃなくて自作のメソッドでもいいけど、computedの方がキャッシュを使えたり動作が軽いのでcomputed推奨
 const priceLabel = computed(() => {
 	if (item1.price > budget * 2) {
 		return 'too expensive...'
