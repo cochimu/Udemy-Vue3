@@ -6,7 +6,7 @@ import Tweet from './components/Tweet.vue'
 </script>
 
 <template>
-  <Tweet></Tweet>
+  <Tweet />
 </template>
 
 <style>
