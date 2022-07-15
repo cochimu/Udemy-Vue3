@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 親から子に値を渡すProps
-import { defineProps  } from 'vue';
+import { defineProps, defineEmits  } from 'vue';
 
 // tweetの型を指定
 type Tweet = {
@@ -13,13 +13,14 @@ type Props = {
 	tweets: Tweet[]
 }
 
-const deleteTweet = (id: number) => {
-	console.log('delete')
-}
-
 // Propsという型でこのTweetListではPropsを受け取る
 // propsで受け取る、とは親からもらうこと
 defineProps<Props>()
+
+const emit = defineEmits(['delete-tweet'])
+const deleteTweet = (id: number) => {
+	emit('delete-tweet', id)
+}
 </script>
 
 <template>

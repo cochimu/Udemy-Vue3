@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// 子から親にイベントを伝えるのはemit
+import { ref, defineEmits } from 'vue'
 const inputtingDescription = ref<string>('')
 
+//emitを作る
+const emit = defineEmits(['post-tweet'])
 const postTweet = () => {
-
+	// post-tweetという名前でinputtingDescription.valueという引数を持ったイベントが渡される
+	emit('post-tweet', inputtingDescription.value)
 }
 </script>
 

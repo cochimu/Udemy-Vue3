@@ -5,11 +5,8 @@ import TweetList from './TweetList.vue';
 
 const tweets = ref([{ id: 0, description: 'Hello, world!' }, { id: 1, description: 'Hello, japan!' }])
 
-const inputtingDescription = ref<string>('')
-
-const postTweet = () => {
-  const tweet = { id: Math.random(), description: inputtingDescription.value }
-  inputtingDescription.value = ''
+const postTweet = (description: string) => {
+  const tweet = { id: Math.random(), description }
   tweets.value.push(tweet)
 }
 
@@ -21,11 +18,11 @@ const deleteTweet = (id: number) => {
 <template>
   <div class="container">
     <h1>Tweeter</h1>
-    <TweetPostForm />
+    <TweetPostForm @post-tweet="postTweet"/>
     <div class="tweet-container">
       <p v-if="tweets.length <= 0">No tweets have been added</p>
       <ul v-else>
-        <TweetList :tweets=" tweets"/>
+        <TweetList :tweets=" tweets" @delete-tweet="deleteTweet"/>
       </ul>
     </div>
   </div>
