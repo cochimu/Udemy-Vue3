@@ -21,6 +21,11 @@ import RocketIcon from './RocketIcon.vue';
         <RocketIcon />
         <RocketIcon />
       </div>
+      <!-- #でslotのnameを指定する -->
+      <template #footer>
+        <span>This is Footer</span>
+        <RocketIcon size="20px" />
+      </template>
     </Card>
 
     <Card title="Icons with Text" class="card with-text-card">
