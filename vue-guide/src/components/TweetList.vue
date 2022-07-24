@@ -8,7 +8,7 @@ type Tweet = {
 	description: string
 }
 
-// TweetのhaiPropsという型を作る
+// Tweetの配列Propsという型を作る
 type Props = {
 	tweets: Tweet[]
 }

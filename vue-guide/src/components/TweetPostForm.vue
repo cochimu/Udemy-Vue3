@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// 子から親にイベントを伝えるのはemit
+// 子から親に伝えるのはemit
 import { ref, defineEmits } from 'vue'
 const inputtingDescription = ref<string>('')
 
