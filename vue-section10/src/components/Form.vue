@@ -1,11 +1,25 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const username = ref<string>('')
+
+// v-focus
+// ルールとしてvから始まる変数名にする
+const vFocus = {
+  mounted: (el: HTMLElement) => {
+    el.focus()
+    // console.log('mounted')
+  }
+}
+
 </script>
 
 <template>
   <form>
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+<!--      このタグに独自ディレクティブを付与できる-->
+      <input id="user-name" name="user-name" type="text" v-focus/>
     </div>
     <div class="form-control">
       <label for="age">Your Age</label>
