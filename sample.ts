@@ -5,6 +5,6 @@ const hello = (name: string): string => {
 	return 'hello, ' + name
 }
 
-// 引数も数値型にするとエラーになる
+// 引数を指定通りにしないとエラーになる
 hello('yukari')
 hello(example)
